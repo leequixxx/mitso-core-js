@@ -63,8 +63,13 @@ function getStringFromTemplate(fname, lname) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  const [text, fname, lname] = /Hello, (\w+) (\w+)!/.exec(value);
+
+  if (text) {
+    return `${fname} ${lname}`;
+  }
+  return null;
 }
 
 /**
